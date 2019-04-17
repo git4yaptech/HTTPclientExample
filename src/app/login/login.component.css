@@ -1,19 +1,12 @@
-html, body {
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100%;
-  font-family: 'Numans', sans-serif;
-  /*align-content: center;*/
-}
-
+/*
 .container {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  /*background-image: url('/src/assets/images/168419.jpg');*/
-}
+  !*background-image: url('/src/assets/images/168419.jpg');*!
 
+}*/
 .card {
   height: 450px;
   width: 400px;
@@ -25,7 +18,7 @@ html, body {
   left: 0;
   right: 0;
   margin: auto;
-  border: orange solid 1px;
+  border:none;
 }
 
 .subContainer {
@@ -33,8 +26,8 @@ html, body {
   margin-right: 5%;
   margin-top: 10%;
 }
-.btn {
-  float: right;
+.btnclass {
+  float: left;
   color: white;
   background-color: mediumseagreen;
   width: 100px;
@@ -52,4 +45,12 @@ html, body {
 .frgPass {
   margin-top: 25%;
   text-align: center;
+}
+input {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: lightgray;
+}
+input:focus {
+  border-color: green;
 }

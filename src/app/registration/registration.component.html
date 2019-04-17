@@ -6,59 +6,113 @@
         <div class="row">
           <div class="col-lg-2 col-sm-2 col-md-2">
           </div>
-          <div class="col-lg-8 col-sm-8 col-md-8" style="border: orange solid 1px;">
+          <div class="col-lg-8 col-sm-8 col-md-8">
             <h3 style="text-align: center">Registration</h3>
-            <form formControl="RegistrationForm">
+            <form name="RegistratonForm" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
+                  [appPasswordMatch]="['password','confirmPassword']"
+                  [mustMatch]="['email','confirmEmail']" novalidate>
               <div class="form-group">
                 <div class="row">
                   <div class="col">
-                    <label>User Name</label>
-                    <input class="form-control" id="uname" required minlength="5" maxlength="12">
-                    <label>First Name</label>
-                    <input class="form-control" id="fname" required>
-                    <label>Last Name</label>
-                    <input class="form-control" id="lname" required>
-                    <label>Mobile Number</label>
-                    <input class="form-control" id="mobile">
+
+                    <label for="uname">User Name</label>
+                    <input class="form-control" id="uname" required name="uname" [(ngModel)]="model.uname"
+                           #uname="ngModel" [ngClass]="{ 'is-invalid': f.submitted && uname.invalid }">
+                    <div *ngIf="f.submitted && uname.invalid" class="invalid-feedback">
+                      <div *ngIf="uname.errors.required">User Name is required or incorrect</div>
+                    </div>
+
+                    <label for="fname">First Name</label>
+                    <input class="form-control" id="fname" required name="fname" [(ngModel)]="model.fname"
+                           #fname="ngModel" [ngClass]="{'is-invalid':f.submitted && fname.invalid}">
+                    <div *ngIf="f.submitted && fname.invalid" class="invalid-feedback">First Name is required</div>
+
+                    <label for="lname">Last Name</label>
+                    <input class="form-control" id="lname" required name="lname" [(ngModel)]="model.lname"
+                           #lname="ngModel" [ngClass]="{'is-invalid':f.submitted && lname.invalid}">
+                    <div *ngIf="f.submitted && lname.invalid" class="invalid-feedback">Last Name is required</div>
+
+                    <label for="Mobile">Mobile Number</label>
+                    <input class="form-control" id="mobile" required type="number" minlength="10" name="mobile"
+                           [(ngModel)]="model.mobile" #mobile="ngModel"
+                           [ngClass]="{'is-invalid':f.submitted && mobile.invalid}">
+                    <div *ngIf="f.submitted && mobile.invalid" class="invalid-feedback">Mobile number is required</div>
+
                   </div>
                   <div class="col">
-                    <label>Email</label>
-                    <input type="email" class="form-control" id="email" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" required name="email" [(ngModel)]="model.email"
+                           #email="ngModel" [ngClass]="{'is-invalid':f.submitted && email.invalid}">
+                    <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">Email address is required or
+                      incorrect
+                    </div>
+
                     <label>Confirm Email</label>
-                    <input type="email" class="form-control" id="confirmEmail" required>
-                    <label>Password</label>
-                    <input type="password" class="form-control" id="password" formControl="password">
-                    <label>Confirm Password</label>
-                    <input type="password" class="form-control" id="confirmPassword" formControl="confirmPassword">
+                    <input type="email" class="form-control" id="confirmEmail" required name="confirmEmail"
+                           [(ngModel)]="model.confirmEmail" #confirmEmail="ngModel"
+                           [ngClass]="{'is-invalid': f.submitted && confirmEmail.invalid }"/>
+                    <div *ngIf="f.submitted && confirmEmail.invalid" class="invalid-feedback">
+                      <div *ngIf="confirmEmail.errors.required">Confirm Email is required</div>
+                      <div *ngIf="confirmEmail.errors.mustMatch">Email must match</div>
+                    </div>
+
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" required name="password"
+                           [(ngModel)]="model.password" #password="ngModel"
+                           [ngClass]="{'is-invalid':f.submitted && password.invalid}">
+                    <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">Password is required or
+                      incorrect
+                    </div>
+
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" class="form-control"
+                           id="confirmPassword" name="confirmPassword"
+                           [(ngModel)]="model.confirmPassword"
+                           #confirmPassword="ngModel"
+                           [ngClass]="{'is-invalid': f.submitted && confirmPassword.invalid }" required/>
+                    <div *ngIf="f.submitted && confirmPassword.invalid" class="invalid-feedback">
+                      <div *ngIf="confirmPassword.errors.required">Confirm Password is required</div>
+                      <div *ngIf="confirmPassword.errors.mustMatch">Passwords must match</div>
+                    </div>
+
                   </div>
                 </div>
-
-
-                <hr>
-                <h5>Security Questions</h5>
+                <hr style="width: 0px">
+                <h5 style="text-align: center">Security Questions</h5>
                 <div class="row">
                   <div class="col">
-                    <label>What is your favorite Colour ?</label>
-                    <input type="text" class="form-control" id="color">
+                    <label for="color">What is your favorite Colour ?</label>
+                    <input type="text" class="form-control" id="color" name="color" [(ngModel)]="model.color"
+                           #color="ngModel" [ngClass]="{'is-invalid': f.submitted && color.invalid }" required/>
+                    <div *ngIf="f.submitted && color.invalid" class="invalid-feedback">
+                      <div *ngIf="color.errors.required">this field is required</div>
+                    </div>
                   </div>
+
                   <div class="col">
-                    <label>What is your pet name ?</label>
-                    <input type="text" class="form-control" id="pet">
+                    <label for="pet">What is your pet name ?</label>
+                    <input type="text" class="form-control" id="pet" name="pet" [(ngModel)]="model.pet" #pet="ngModel"
+                           [ngClass]="{'is-invalid': f.submitted && pet.invalid }" required/>
+                    <div *ngIf="f.submitted && pet.invalid" class="invalid-feedback">
+                      <div *ngIf="pet.errors.required">this field is required</div>
+                    </div>
                   </div>
-                </div>
-
-
-                <div style="margin-top: 5%">
-                  <button type="submit" class="btn btn-success" (click)="onSubmit()">Submit</button>
-                  <button type="reset" class="btn btn-primary" style="margin-left: 2%">Reset</button>
                 </div>
               </div>
-            </form>
-          </div>
-          <div class="col-lg-2 col-sm-2 col-md-2">
-          </div>
+
+
+              <div style="margin-top: 5%">
+                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="reset" class="btn btn-primary" style="margin-left: 2%">Reset</button>
+              </div>
+
+          </form>
+        </div>
+        <div class="col-lg-2 col-sm-2 col-md-2">
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>

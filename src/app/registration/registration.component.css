@@ -1,9 +1,8 @@
 html, body {
   background-size: cover;
-  background-repeat: no-repeat;
   height: 100%;
   font-family: 'Numans', sans-serif;
-  /*align-content: center;*/
+  background-color: lightgray;
 }
 
 .container {
@@ -11,6 +10,7 @@ html, body {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+
   /*background-image: url('/src/assets/images/168419.jpg');*/
 }
 
@@ -29,4 +29,12 @@ html, body {
 .frgPass {
   margin-top: 25%;
   text-align: center;
+}
+input {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: lightgray;
+}
+input:focus {
+  border-color: lightgreen;
 }

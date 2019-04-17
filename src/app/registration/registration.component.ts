@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-registration',
@@ -7,23 +9,20 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  RegistrationForm = new FormGroup({
-    password: new FormControl(),
-    confirmPassword: new FormControl()
-  })
+  model: any = {};
+  // RegistrationForm = this.fb.group({
+  //    uname: new FormControl('', Validators.required)
+  //  })
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
-
   }
 
   onSubmit() {
+    this.router.navigate(['/home']);
   }
 
-  identityRevealedValidator() {
-
-  }
 }
 
