@@ -1,0 +1,32 @@
+html, body {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: 'Numans', sans-serif;
+  /*align-content: center;*/
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  /*background-image: url('/src/assets/images/168419.jpg');*/
+}
+
+
+.subContainer {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+}
+
+
+.alert {
+  margin-top: 15%;
+}
+
+.frgPass {
+  margin-top: 25%;
+  text-align: center;
+}

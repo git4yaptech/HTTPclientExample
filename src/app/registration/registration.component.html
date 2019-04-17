@@ -1,0 +1,64 @@
+<div>
+  <div class="container">
+    <div>
+      <div class="subContainer">
+
+        <div class="row">
+          <div class="col-lg-2 col-sm-2 col-md-2">
+          </div>
+          <div class="col-lg-8 col-sm-8 col-md-8" style="border: orange solid 1px;">
+            <h3 style="text-align: center">Registration</h3>
+            <form formControl="RegistrationForm">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col">
+                    <label>User Name</label>
+                    <input class="form-control" id="uname" required minlength="5" maxlength="10">
+                    <label>First Name</label>
+                    <input class="form-control" id="fname" required>
+                    <label>Last Name</label>
+                    <input class="form-control" id="lname" required>
+                    <label>Mobile Number</label>
+                    <input class="form-control" id="mobile">
+                  </div>
+                  <div class="col">
+                    <label>Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                    <label>Confirm Email</label>
+                    <input type="email" class="form-control" id="confirmEmail" required>
+                    <label>Password</label>
+                    <input type="password" class="form-control" id="password" formControl="password">
+                    <label>Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" formControl="confirmPassword">
+                  </div>
+                </div>
+
+
+                <hr>
+                <h5>Security Questions</h5>
+                <div class="row">
+                  <div class="col">
+                    <label>What is your favorite Colour ?</label>
+                    <input type="text" class="form-control" id="color">
+                  </div>
+                  <div class="col">
+                    <label>What is your pet name ?</label>
+                    <input type="text" class="form-control" id="pet">
+                  </div>
+                </div>
+
+
+                <div style="margin-top: 5%">
+                  <button type="submit" class="btn btn-success" (click)="onSubmit()">Submit</button>
+                  <button type="reset" class="btn btn-primary" style="margin-left: 2%">Reset</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-2 col-sm-2 col-md-2">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
