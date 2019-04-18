@@ -12,17 +12,15 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private authService: AuthServiceService) { }
 
   ngOnInit() {
+    this.model.name = 'test@gmail.com';
+    this.model.password = 'test@123';
   }
   onSubmit() {
-    this.authService.login().subscribe(() => {
-      if (this.authService.isLoggedIn) {
-        // Get the redirect URL from our auth service
-        // If no redirect has been set, use the default
-        const redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : './';
-
-        // Redirect the user
-        this.router.navigateByUrl(redirect);
-      }
-    });
+      this.authService.login().subscribe(() => {
+        if (this.authService.isLoggedIn) {
+          const redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '';
+          this.router.navigateByUrl(redirect);
+        }
+      });
   }
 }

@@ -1,3 +1,37 @@
-<p>
-  user-list works!
-</p>
+<div class="row">
+  <div class="col-lg-3">
+  </div>
+  <div class="col-lg-6">
+    <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name.title + " " + element.name.first + " " +
+          element.name.last}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="gender">
+        <mat-header-cell *matHeaderCellDef> Gender</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.gender}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="age">
+        <mat-header-cell *matHeaderCellDef> Age</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dob.age}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="thumbnail">
+        <mat-header-cell *matHeaderCellDef> Photo</mat-header-cell>
+        <mat-cell *matCellDef="let element"><img [src]="element.picture.thumbnail"></mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns;"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showDetail(row)"></mat-row>
+    </mat-table>
+
+  </div>
+  <div class="col-lg-3">
+  </div>
+</div>
+
+

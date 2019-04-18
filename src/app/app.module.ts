@@ -11,6 +11,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import {FormsModule} from '@angular/forms';
 import { MustMatchDirective } from './registration/must-match.directive';
 import { PasswordMatchDirective } from './registration/password-match.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material';
+import { ModalUserDetailsComponent } from './modal-user-details/modal-user-details.component';
 enableProdMode()
 @NgModule({
   declarations: [
@@ -22,14 +25,17 @@ enableProdMode()
     ForgotPasswordComponent,
     MustMatchDirective,
     PasswordMatchDirective,
+    ModalUserDetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

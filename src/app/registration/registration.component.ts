@@ -10,9 +10,6 @@ import {Router} from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
   model: any = {};
-  // RegistrationForm = this.fb.group({
-  //    uname: new FormControl('', Validators.required)
-  //  })
 
   constructor(private router: Router) {
   }
@@ -23,6 +20,5 @@ export class RegistrationComponent implements OnInit {
   onSubmit() {
     this.router.navigate(['/home']);
   }
-
 }
 
