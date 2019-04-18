@@ -4,10 +4,11 @@ import { UserListComponent } from 'src/app/user-list/user-list.component';
 import { HomeComponent } from 'src/app/home/home.component';
 import { LoginComponent } from 'src/app/login/login.component';
 import { RegistrationComponent } from 'src/app/registration/registration.component';
+import {AuthGuard} from 'src/app/auth/auth.guard';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'userList', component: UserListComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'userList', component: UserListComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'regi', component: RegistrationComponent }
 ];

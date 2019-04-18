@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {AuthServiceService} from 'src/app/auth/auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +9,20 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   model: any = {};
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthServiceService) { }
 
   ngOnInit() {
   }
   onSubmit() {
-  this.router.navigate(['/home']);
+    this.authService.login().subscribe(() => {
+      if (this.authService.isLoggedIn) {
+        // Get the redirect URL from our auth service
+        // If no redirect has been set, use the default
+        const redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : './';
+
+        // Redirect the user
+        this.router.navigateByUrl(redirect);
+      }
+    });
   }
 }
